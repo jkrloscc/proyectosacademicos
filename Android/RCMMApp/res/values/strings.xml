@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">RCMMApp</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_delete">Borrar</string>
+    <string name="action_picture">Enviar Foto</string>
+    <string name="action_mic">Grabar mensaje Voz</string>
+    <string name="action_zumbido">Enviar Zumbido</string>
+    <string name="IdDevice">ID Dispositivo:</string>
+    <string name="LineNumber">Número Teléfono:</string>
+    <string name="SoftwareVersion">Versión Software:</string>
+    <string name="OperatorName">Nombre Operador:</string>
+    <string name="SimCountryIso">Código País SIM:</string>
+    <string name="SimOperator">Operador SIM:</string>
+    <string name="SimSerialNumber">Número Serie SIM:</string>
+    <string name="SubscriberId">Suscriptor ID:</string>
+    <string name="ObtenerDatos">Obtener Datos</string>
+    <string name="NetworkType">Tipo de Red Móvil</string>
+    <string name="PhoneType">Tipo Radio Voz:</string>
+    <string name="estadoLlamada">Estado de la llamada:</string>
+    <string name="estadoConexion">Estado de la conexión:</string>
+    <string name="estadoServicio">Estado del servicio:</string>
+    <string name="localizacion">Localización:</string>
+    <string name="nivelSignal">Nivel de Señal:</string>
+    <string name="datos">Datos:</string>
+    <string name="title_activity_monitor_trafico">Monitor Trafico</string>
+    <string name="bytesRecibidos">Bytes Recibidos:</string>
+    <string name="paquetesRecibidos">Paquetes Recibidos:</string>
+    <string name="bytesEnviados">Bytes Enviados:</string>
+    <string name="paquetesEnviados">Paquetes Enviados:</string>
+    <string name="estadisticas">Consultar Estadísticas</string>
+    <string name="trafico">Tráfico de Apps</string>
+    <string name="title_activity_traffic_stats">Monitor Trafico</string>
+    <string name="title_activity_chat_rcmmapp">Chat RCMM App</string>
+    <string name="title_activity_chat_rcmmapp_list">Chat RCMM App</string>
+    <string name="title_activity_chat_rcmmappii">Chat RCMM App II</string>
+    <string name="title_activity_chat_rcmmappii_list">Chat RCMM App II</string>
+    <string name="dirIpSrc">Dirección IP de su equipo:</string>
+    <string name="dirIpDst">Dirección IP del otro equipo:</string>
+    <string name="dirIpDstII">Dirección IP del dispositivo o grupo:</string>
+    <string name="puerto">Puerto:</string>
+    <string name="aceptar">Aceptar</string>
+    <string name="limpiar">Limpiar</string>
+    <string name="conexion">Conexión</string>
+
+</resources>

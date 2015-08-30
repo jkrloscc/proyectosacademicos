@@ -1,0 +1,211 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/data"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="es.unex.rcmm.rcmmapp.MonitorTraficoActivity" >
+
+    <ImageView
+        android:id="@+id/imageViewWIFI"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_gravity="center"
+        android:src="@drawable/wifiicon" />
+
+    <LinearLayout
+        android:id="@+id/LinearLayoutWifi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp" >
+
+        <TextView
+            android:id="@+id/textViewBytesRecibidosW"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bytesRecibidos"
+            android:textColor="#FFFF"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textViewBytesRecibidosResW"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFF" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/textViewPaquetesRecibidosW"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/paquetesRecibidos"
+            android:textColor="#FFFF"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textViewPaquetesRecibidosResW"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFF" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/textViewBytesEnviadosW"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bytesEnviados"
+            android:textColor="#FFFF"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textViewBytesEnviadosResW"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFF" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/textViewPaquetesEnviadosW"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/paquetesEnviados"
+            android:textColor="#FFFF"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textViewPaquetesEnviadosResW"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFF" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageViewMovil"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/mobilenetworkicon" />
+
+    <LinearLayout
+        android:id="@+id/LinearLayoutMovil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp" >
+
+        <TextView
+            android:id="@+id/textViewBytesRecibidosM"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bytesRecibidos"
+            android:textColor="#FFFF"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textViewBytesRecibidosResM"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFF" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/textViewPaquetesRecibidosM"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/paquetesRecibidos"
+            android:textColor="#FFFF"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textViewPaquetesRecibidosResM"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFF" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/textViewBytesEnviadosM"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bytesEnviados"
+            android:textColor="#FFFF"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textViewBytesEnviadosResM"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFF" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/textViewPaquetesEnviadosM"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/paquetesEnviados"
+            android:textColor="#FFFF"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textViewPaquetesEnviadosResM"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFF" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/LinearLayoutBotones"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical" >
+
+        <Button
+            android:id="@+id/buttonEstadisticas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/estadisticas"
+            android:textColor="#FFFF"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/buttonTrafico"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/trafico"
+            android:textColor="#FFFF"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</LinearLayout>

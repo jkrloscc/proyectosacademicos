@@ -1,0 +1,215 @@
+/**
+ * Implementacion de los metodos de la clase Laberinto.
+ *
+ * @version 1.0
+ * @author
+ * Asignatura Desarrollo de Programas<br/>
+ * Grupo: Feli&Carlos <br/>
+ * Entrega EC1 <br/>
+ * <b> Felisa Maria Arroba Alonso </b><br>
+ * <b> Juan Carlos Bonilla Bermejo </b><br>
+ * Curso 12/13
+ */
+package station;
+
+import java.util.List;
+
+import estructurasDeDatos.Grafo;
+
+public class Laberinto {
+
+	//Grafo sobre el que se calcula el laberinto
+	private Grafo grafo = new Grafo ();
+
+	public Laberinto ( ){
+
+	}
+
+
+	/**
+	 * @pre Laberinto creado correctamente
+	 * @post Devuelve el grafo del laberinto
+	 * @return <b>grafo<b> El grafo del laberinto
+	 * @complejidad <b>O(1)<b>
+	 */
+	public Grafo getGrafo(){
+		return this.grafo;
+	}
+
+
+
+	/**
+	 * @pre Laberinto creado correctamente
+	 * @post Actualiza los valores de las matrices Warshall y Floyd
+	 * @complejidad <b>O(1)<b>
+	 */
+	public void actualizarGrafo(){
+
+		grafo.warshall();
+		grafo.floyd();
+	}
+
+
+
+	/**
+	 * @pre Laberinto creado correctamente
+	 * @post Describe  el laberinto
+	 * @param <b>paredes<b> Lista de Parades con la que hacer el laberinto
+	 * @param <b>miPlanta<b> Planta donde se encuentra el laberinto
+	 * @param <b>maxNodos<b> El numero maximo de nodos del laberinto
+	 * @complejidad <b>O(n)<b>
+	 */
+	public void kruskal(List<Pared> paredes,  int maxNodos) {
+
+		Planta miPlanta = Planta.obtenerInstancia(0);
+
+		grafo.inicializarGrafo(maxNodos);
+		int random, origen, destino;
+		Sala [] aux = miPlanta.getVectorSalas(); // Rescatamos las salas de mi planta
+
+
+		while (!paredes.isEmpty()){
+
+			random = GenAleatorios.generarNumero(paredes.size());
+			Pared paredElegida = new Pared (paredes.get(random));
+
+			origen = paredElegida.getOrigen();
+			destino = paredElegida.getDestino();
+
+			paredes.remove(random); 
+
+			if (aux[origen].getMarcador()!= aux[destino].getMarcador()){
+
+				//Creamos las nuevas vecinas
+				miPlanta.getVectorSalas()[origen].crearVecina( miPlanta.getAncho(), destino);
+				miPlanta.getVectorSalas()[destino].crearVecina( miPlanta.getAncho(), origen);
+
+				//Tiramos la pared (creamos los  arcos)
+				grafo.nuevoArco(origen,destino, 1);
+				grafo.nuevoArco(destino,origen, 1);
+
+				//Compartimos la marca
+				miPlanta.compartirMarcador (aux[destino].getMarcador(), aux[origen].getMarcador());
+
+			}
+		}
+		actualizarGrafo();
+	}
+
+
+
+	/**
+	 * @pre Laberinto creado correctamente
+	 * @post Comprueba si existe alguna vecina No accesible a la sala
+	 * @param <b>sala<b> Sala a tratar
+	 * @param <b>ancho<b> Ancho de la planta
+	 * @param <b>alto<b> Alto de la planta
+	 * @param <b>salaVecina<b> Sala vecina No accesible
+	 * @return <b>True<b> si existe alguna sala No accesible,
+	 *         <b>False<b> en caso contrario
+	 * @complejidad <b>O(1)<b>
+	 */
+	private boolean tieneVecinaNoAccesible(Sala sala, int ancho, int alto, Sala salaVecina) {
+
+		int idSala = sala.getIdSala(); //Rescatamos el identificador de sala
+
+		//Calculamos la sala norte
+		if ((sala.getVecinoN() == idSala)  &&  (idSala - ancho > 0)){ //Entramos en el if cuando no tenemos vecina norte; pero hay salas
+			salaVecina.setIdSala(idSala-ancho);
+			if (sePuedeTirarPared(idSala, salaVecina.getIdSala()))
+				return true;
+		}
+
+		//Calculamos la sala Sur
+		if ((sala.getVecinoS() == idSala)  &&  ((idSala + ancho) <= (ancho * alto))){ //Entramos en el if cuando no tenemos vecina sur; pero hay salas
+			salaVecina.setIdSala(idSala+ancho);
+			if (sePuedeTirarPared(idSala, salaVecina.getIdSala()))
+				return true;
+		}
+
+		//Calculamos la sala Oeste
+		if ((sala.getVecinoO() == idSala) &&  ((idSala % ancho) != 0 )){ //Entramos en el if cuando no tenemos vecina oeste; pero hay salas
+			salaVecina.setIdSala(idSala-1);
+			if (sePuedeTirarPared(idSala, salaVecina.getIdSala()))
+				return true;
+		}
+
+		//Calculamos la sala Este
+		if ((sala.getVecinoE() == idSala)  &&  ((idSala+1) % ancho != 0)){ //Entramos en el if cuando no tenemos vecina este; pero hay salas
+			salaVecina.setIdSala(idSala+1);
+			if (sePuedeTirarPared(idSala, salaVecina.getIdSala()))
+				return true;
+		}
+
+		return false;
+
+	}
+
+
+
+
+	/**
+	 * @pre Laberinto creado correctamente
+	 * @post Comprueba si es posible tirar una pared determinada sin crear espacios en blanco
+	 * @param <b>origen<b> Inicio de la pared
+	 * @param <b>destino<b> Final de la pared
+	 * @return <b>True<b> si la pared puede ser derribada,
+	 *         <b>False<b> en caso contrario
+	 * @complejidad <b>O(n)<b>
+	 */
+	public boolean sePuedeTirarPared(int origen, int destino) {
+
+
+		boolean sePuede = false;
+		int cont =0;
+
+		while (origen!=destino){
+
+			origen = grafo.siguiente(origen, destino);
+			cont++;
+		}
+
+		if (cont>3) sePuede = true;
+
+		return sePuede;
+	}
+
+
+
+	/**
+	 * @pre Laberinto creado correctamente
+	 * @post Realiza atajos en el laberinto
+	 * @param <b>miPlanta<b> Planta donde se encuentra el laberinto
+	 * @complejidad <b>O(n)<b>
+	 */
+	public void atajos (){
+
+		Planta miPlanta = Planta.obtenerInstancia(0);
+		//Calculamos n, el numero de paredes a derribar
+		int n = (miPlanta.getVectorSalas().length*5)/100;
+		int MaxRandom = miPlanta.getVectorSalas().length;
+
+		while (n!=0){
+
+			int pos = GenAleatorios.generarNumero(MaxRandom);
+			Sala aux = miPlanta.getSala(pos);//Elegimos una sala al azar
+			Sala vecinaNoAccesible= new Sala ();
+
+			if (tieneVecinaNoAccesible(aux,miPlanta.getAncho(),miPlanta.getAlto(),vecinaNoAccesible)){
+
+				grafo.nuevoArco(pos,vecinaNoAccesible.getIdSala(), 1);
+				grafo.nuevoArco(vecinaNoAccesible.getIdSala(),pos, 1);
+
+				miPlanta.getSala(pos).crearVecina(miPlanta.getAncho(), vecinaNoAccesible.getIdSala());
+				miPlanta.getSala(vecinaNoAccesible.getIdSala()).crearVecina(miPlanta.getAncho(), pos);
+				n--;
+			}
+
+		}
+
+		actualizarGrafo();
+	}
+
+
+
+}

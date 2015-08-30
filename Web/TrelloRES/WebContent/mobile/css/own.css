@@ -1,0 +1,80 @@
+ul li{
+	list-style-type:none;
+}
+
+buttom, buttom{
+	background-color:#00C6D4;
+ 
+}
+
+header{
+	background: url("media/logo-index.png");
+	height:150px;
+	position:relative;
+	background-repeat: no-repeat;
+	margin-left: 35%;
+	margin-top: 2%;
+}
+
+#main-login {
+	border: 1px solid #BFBFBF;
+	border-radius: 2px;
+	height: auto;
+	background-color: #F0F0F0;
+	width: 300px;
+	margin-top: 10px;
+	margin-left: 15%;
+	padding: 10px;
+	color: #AA9393;
+}
+
+#main-login h1 {
+	color: black;
+	font-family: "facitweb", Helvetica sans-serif;
+	margin-bottom: 10px;
+}
+
+#main-login h2 {
+	font-family: "facitweb", Helvetica sans-serif;
+	color: black;
+}
+
+#main-login  input {
+	border-radius: 5px;
+	border: 1px solid #BFBFBF;
+	font-family: "facitweb", Helvetica sans-serif;
+	display: block;
+	width: 200px;
+	height: 30px;
+}
+
+#main-login  p {
+	display: inline-block;
+	margin-right: 20px;
+}
+
+#main-login>a {
+	display: inline-block;
+}
+
+#main-login a:visited {
+	text-decoration: none;
+	color: #AA9393;
+}
+
+#main-login a:hover {
+	text-decoration: none;
+	color: black;;
+}
+
+#main-login a:active {
+	text-decoration: none;
+	color: #AA9393;
+}
+
+#main-login button {
+	width: auto;
+	height: 40px;
+	margin-top: 20px;
+	margin-bottom: 10px;
+}

@@ -1,0 +1,161 @@
+/**
+ * Implementacion de los metodos de la clase Pila.
+ *
+ * @version 1.0
+ * @author
+ * Asignatura Desarrollo de Programas<br/>
+ * Grupo: Feli&Carlos <br/>
+ * Entrega Junio <br/>
+ * <b> Felisa Maria Arroba Alonso </b><br>
+ * <b> Juan Carlos Bonilla Bermejo </b><br>
+ * Curso 12/13
+ */
+
+package estructurasDeDatos;
+import station.Llave;
+import station.exceptIdLlave;
+
+public class Pila <T extends Comparable <T>>{
+
+	/** Puntero a la cima de la pila*/
+	private Nodo <T> cima;
+
+
+	/** Contador de  elementos de la Pila*/
+	private int contador;
+
+	private static class Nodo <T> {
+		/** Dato almacenado en cada nodo */
+		private T dato;
+		/** Enlace al siguiente elemento */
+		private Nodo <T> siguiente;
+
+
+		Nodo (T dato) {
+			this.dato = dato;
+			this.siguiente = null;
+		}
+	}//class Nodo
+
+
+	public Pila() {
+		cima = null;
+		this.contador =0;
+	}
+
+
+	/**
+	 * @post Constructor parametrizado de la clase Pila
+	 * @param <b>dato<b> El nuevo elemento en la pila
+	 * @complejidad <b>O(1)<b>
+	 */
+	public Pila(T dato) {
+		Nodo <T> nodo = new Nodo <T>(dato);
+		nodo.siguiente = cima;
+		cima = nodo;
+		contador++;
+	}
+
+
+	/**
+	 * @pre Pila creada correctamente
+	 * @post Devuelve el elemento en la cima de la pila
+	 * @return <b>T<b> La cima de la pila
+	 * @complejidad <b>O(1)<b>
+	 */
+	public T getDatoCima(){
+		return cima.dato;
+	}
+
+
+	/**
+	 * @pre Pila creada correctamente
+	 * @post Devuelve el numero de elementos de la pila
+	 * @return El numero de elementos de la pila
+	 * @complejidad <b>O(1)<b>
+	 */
+	public int getContador(){
+		return this.contador;
+	}
+
+
+
+	/**
+	 * @pre Pila creada correctamente
+	 * @post Comprueba si la pila esta vacia
+	 * @return <b>True<b> si la pila esta vacia, <b>False<b> en caso contrario
+	 * @complejidad <b>O(1)<b>
+	 */
+	public boolean estaVacia (){
+		return (cima==null);
+	}
+
+
+
+	/**
+	 * @pre Pila creada correctamente
+	 * @post Inserta un nuevo elemento en la pila
+	 * @param <b>dato<b> El nuevo elemento a insertar en la pila
+	 * @complejidad <b>O(1)<b>
+	 */
+	public void insertarDato(T dato ) {
+		Nodo <T> nodo = new Nodo <T>(dato);
+		nodo.siguiente = cima;
+		cima = nodo;
+		contador++;
+	}
+
+
+
+	/**
+	 * @pre Pila creada correctamente y no vacia
+	 * @post Elimina un dato de la pila. Se elimina el dato que esta en la cima
+	 * @complejidad <b>O(1)<b>
+	 */
+	public void sacarDato() {
+
+		if (!estaVacia()){		
+			cima = cima.siguiente;
+			contador--;
+		}
+	}
+
+
+
+	/**
+	 * @throws exceptIdLlave 
+	 * @pre Pila creada correctamente
+	 * @post Metodo principal. Hace pruebas de inserciones y borrados en la pila y muestra el resultado obtenido
+	 * @complejidad <b>O(n)<b>
+	 */
+	public static void main (String args[]) throws exceptIdLlave {
+
+		Pila <Llave> pila1 = new Pila <Llave>();
+		Llave L1 = new Llave (1);
+		Llave L2 = new Llave (2);
+		Llave L3 = new Llave (3);
+		Llave L4 = new Llave (4);
+		Llave L5 = new Llave (5);
+		Llave L6 = new Llave (6);
+		Llave dato = null;
+
+
+		//Pruebas de inserciones en la pila
+		pila1.insertarDato(L1);
+		pila1.insertarDato(L2);
+		pila1.insertarDato(L3);
+		pila1.insertarDato(L4);
+		pila1.insertarDato(L5);
+		pila1.insertarDato(L6);
+
+		//Mostrando la pila
+		System.out.println("Contenido de la pila");
+
+		while (!pila1.estaVacia()){
+			dato = (Llave) pila1.getDatoCima();
+			System.out.println(dato.getDato());
+			pila1.sacarDato();
+		}
+	}
+
+}

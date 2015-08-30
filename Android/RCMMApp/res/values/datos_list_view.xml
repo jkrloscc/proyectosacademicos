@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="aplicaciones">
+        <item>Estado Smartphone I</item>
+        <item>Estado Smartphone II</item>
+        <item>Monitor Trafico</item>
+        <item>Chat RCMM App</item>
+        <item>Chat RCMM App II</item>
+    </string-array>
+</resources>

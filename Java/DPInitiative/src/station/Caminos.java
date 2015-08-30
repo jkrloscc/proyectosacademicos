@@ -1,0 +1,295 @@
+/**
+ * Implementacion de los metodos de la clase Caminos.
+ *
+ * @version 1.0
+ * @author
+ * Asignatura Desarrollo de Programas<br/>
+ * Grupo: Feli&Carlos <br/>
+ * Entrega Junio <br/>
+ * <b> Felisa Maria Arroba Alonso </b><br>
+ * <b> Juan Carlos Bonilla Bermejo </b><br>
+ * Curso 12/13
+ */
+
+package station;
+
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ArrayList;
+
+public class Caminos {
+
+	/** Atributo que indica el numero maximo de salas que vamos a tener*/
+	private  int NUMSALAS=0; 
+
+	/** Atributo que tiene la ruta que vamos a seguir por las diferentes salas en un determinado camino*/
+	private HashSet<List<Integer>> conjuntoCaminos= new HashSet<List<Integer>>();
+
+	/** Atributo que contiene toda la lista de salas*/
+	private List <Sala> salas= new ArrayList<Sala>();
+
+	public Caminos(){
+		for(int i=0; i< NUMSALAS; i++){
+			Sala sala= new Sala(i);
+			salas.add(sala);
+		}
+	}
+
+
+
+	/**
+	 * @post Contructor parametrizado
+	 * @param <b>numSalas<b> Numero de salas por el que nuestro camino puede moverse
+	 * @throws exceptIdSala 
+	 * @complejidad <b>O(1)<b>
+	 */
+	public Caminos(int numSalas){
+		this.NUMSALAS = numSalas;
+
+		for(int i=0; i< NUMSALAS; i++){
+			Sala sala= new Sala(i);
+			salas.add(sala);
+		}
+	}
+
+
+
+	/**
+	 * @pre Camino creado correctamente
+	 * @post Devuelve la lista de salas del camino
+	 * @return <b>salas<b> La lista de salas del camino
+	 * @complejidad <b>O(1)<b>
+	 */
+	public List <Sala> getSalas (){
+		return this.salas;
+	}
+
+
+
+	/**
+	 * @pre Camino creado correctamente
+	 * @post Devuelve la lista de salas del camino
+	 * @return <b>salas<b> La lista de salas del camino
+	 * @complejidad <b>O(1)<b>
+	 */
+	public void setSalas (Sala[] salas){
+		for (int i=0; i< salas.length; i++)
+			this.salas.add(salas[i]);
+	}
+
+
+
+	/**
+	 * @pre Camino creado correctamente
+	 * @post Devuelve el conjunto de caminos a seguir por las diferentes salas
+	 * @return <b>conjuntoCaminos<b> El conjunto de listas de caminos
+	 * @complejidad <b>O(1)<b>
+	 */
+	public HashSet<List<Integer>> getConjuntoCaminos (){
+		return this.conjuntoCaminos;
+	}
+
+
+
+	/**
+	 * @pre Camino creado correctamente
+	 * @post Configura  el conjunto de caminos a seguir por las diferentes salas
+	 * @param <b>conjuntoCaminos<b> El conjunto de listas de caminos
+	 * @complejidad <b>O(1)<b>
+	 */
+	public void setConjuntoCaminos (HashSet<List<Integer>> conjuntoCaminos){
+		this.conjuntoCaminos = conjuntoCaminos;
+	}
+
+
+
+	/**
+	 * @pre Camino creado correctamente
+	 * @post Inserta un camino al conjunto de caminos
+	 * @param <b>camino<b> Camino a insertar
+	 * @complejidad <b>O(1)<b>
+	 */
+	public void addCamino(List<Integer> camino){
+		conjuntoCaminos.add(camino);
+	}
+
+
+
+	/**
+	 * @pre Camino creado correctamente
+	 * @post Muestra todos los caminos guardados
+	 * @complejidad <b>O(n²)<b>
+	 */
+	public void mostrar(){
+		System.out.println("----- caminos ------");
+		Iterator<List<Integer>> it_conjunto=conjuntoCaminos.iterator();
+		Iterator<Integer> it;
+		List<Integer> camino= new ArrayList<Integer>();
+
+		for(int i=0; i<conjuntoCaminos.size(); i++){
+			System.out.println("Camino "+i+": ");
+			camino=(List<Integer>) it_conjunto.next();
+			it= camino.iterator();
+			for(;it.hasNext();){
+				System.out.print(it.next()+" ");
+			}
+			System.out.println();
+		}
+	}
+
+
+
+	/**
+	 * @pre Camino creado correctamente
+	 * @post Incrementa la frecuencia de las salas mas frecuentadas
+	 * @complejidad <b>O(n²)<b>
+	 */
+	public void calcularSalasFrecuentes(){
+		Iterator<List<Integer>>  it_conjunto=conjuntoCaminos.iterator();
+		Iterator<Integer> it;
+		int idSala;
+		List<Integer> camino= new ArrayList<Integer>();
+
+		for(int i=0; i<conjuntoCaminos.size(); i++){
+			camino=(List<Integer>) it_conjunto.next();
+			it= camino.iterator();
+			for(;it.hasNext();){
+				idSala=(Integer) it.next();
+				salas.get(idSala).setFrecuencia();
+			}
+		}
+
+	}
+
+
+
+
+	/**
+	 * @pre Camino creado correctamente
+	 * @post Muestra todas las salas creadas, con sus frecuencias
+	 * @complejidad <b>O(n)<b>
+	 */
+	public void mostrarSalas(){
+		System.out.println("----- salas ------");
+		Sala salaAux;
+		Iterator<Sala> it= salas.iterator();
+		for(; it.hasNext();){
+			salaAux=it.next();
+			System.out.println("Sala: "+salaAux.getIdSala()+"  frecuencia-> "+salaAux.getFrecuencia());
+		}
+	}
+
+
+
+
+	/**
+	 * @pre Camino creado correctamente
+	 * @post Muestra las salas mas frecuentes
+	 * @param <b>numSalas<b> Numero de salas a mostrar
+	 * @complejidad <b>O(n²)<b>
+	 */
+	public void mostrarSalasFrecuentes(int numSalas){
+		List <Integer> salasFrecuentes= new ArrayList<Integer>();
+		List <Sala> salasAux= new ArrayList<Sala>();
+		salasAux.addAll(salas);
+		Sala mayor;
+		int contador=0;
+		while(!salasAux.isEmpty() && contador<numSalas){
+			mayor=salasAux.get(0);
+			for(int i=0; i<salasAux.size(); i++)
+				if(mayor.getFrecuencia()< salasAux.get(i).getFrecuencia())
+					mayor=salasAux.get(i);
+			salasAux.remove(mayor);
+			contador++;
+			salasFrecuentes.add(mayor.getIdSala());
+		}
+
+
+		System.out.println("*** mayor fecuencia ***");
+		System.out.println(salasFrecuentes);
+	}
+
+
+
+
+	/**
+	 * @pre Camino creado correctamente
+	 * @post Muestra las salas mas frecuentes
+	 * @param <b>numSalas<b> Numero de salas a mostrar
+	 * @param <b>salasFrecuentes<b> Lista de salas frecuentes
+	 * @complejidad <b>O(n²)<b>
+	 */
+	public void mostrarSalasFrecuentes(int numSalas, List <Integer> salasFrecuentes){
+		Planta p = Planta.obtenerInstancia(0);
+
+		List <Sala> salasAux= new ArrayList<Sala>();
+		salasAux.addAll(salas);
+		Sala mayor;
+		int contador=0;
+
+		salasAux.remove(0); // Quitamos la sala cero 
+		salasAux.remove(p.getSalaSalida()-1); // Quitamos la sala de salida 
+
+		while(!salasAux.isEmpty() && contador<numSalas){
+			mayor=salasAux.get(0);
+			for(int i=0; i<salasAux.size(); i++)
+				if(mayor.getFrecuencia()< salasAux.get(i).getFrecuencia())
+					mayor=salasAux.get(i);
+			salasAux.remove(mayor);
+			contador++;
+			salasFrecuentes.add(mayor.getIdSala());
+		}
+	}
+
+
+
+
+	/**
+	 * @pre Camino creado correctamente
+	 * @post Devuelve la Sala Frecuente en una determinada posicion
+	 * @param <b>pos<b> Posicion de la sala frecuente que a mostrar
+	 * @return El <b>entero<b> valor del identificador de Sala con esa frecuencia
+	 * @complejidad <b>O(n²)<b>
+	 */
+	public int devolverSalaFrecuente(int pos){
+
+		List<Integer> salasFrecuentes= new ArrayList<Integer>();
+		mostrarSalasFrecuentes(9, salasFrecuentes);
+
+		return salasFrecuentes.get(pos);
+	}
+
+
+
+
+	/**
+	 * @pre Camino creado correctamente
+	 * @post Devuelve las salas mas frecuentes
+	 * @param <b>numSalas<b> Numero de salas a devolver
+	 * @return <b>salasFrecuentes<b> Lista de salas mas frecuentes
+	 * @complejidad <b>O(n²)<b>
+	 */
+	public List<Integer> devolverFrecuentes(int numSalas){
+		List <Integer> salasFrecuentes= new ArrayList<Integer>();
+		List <Sala> salasAux= new ArrayList<Sala>(salas);
+		salasAux.addAll(salas);
+		Sala mayor;
+		int contador=0;
+		while(!salasAux.isEmpty() && contador<numSalas){
+			mayor=salasAux.get(0);
+			for(int i=0; i<salasAux.size(); i++)
+				if(mayor.getFrecuencia()< salasAux.get(i).getFrecuencia())
+					mayor=salasAux.get(i);
+			salasAux.remove(mayor);
+			contador++;
+			salasFrecuentes.add(mayor.getIdSala());
+		}
+
+		return salasFrecuentes;
+	}
+
+
+
+
+}

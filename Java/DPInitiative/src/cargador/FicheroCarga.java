@@ -1,0 +1,82 @@
+/**
+ * Implementacion de los metodos de la clase FicheroCarga
+ * Clase creada para ser usada en la utilidad cargador
+ * @version 1.0
+ * @author
+ * Asignatura Desarrollo de Programas<br/>
+ * Grupo: Feli&Carlos <br/>
+ * Entrega Junio <br/>
+ * <b> Felisa Maria Arroba Alonso </b><br>
+ * <b> Juan Carlos Bonilla Bermejo </b><br>
+ * Curso 12/13
+ */
+
+package cargador;
+import java.io.*;
+
+import station.exceptIdLlave;
+
+public class FicheroCarga {
+
+	/**  Atributo de la clase que indica el numero maximo de campos que se pueden leer */
+	public static final int MAXCAMPOS  = 10;
+
+	/**  Buffer para almacenar el flujo de entrada	*/
+	private static BufferedReader bufferIn;
+
+
+	/**
+	 * @post Pocesa el fichero. Sin excepciones
+	 * @param <b>nombreFichero<b> Cadena con el nombre del fichero a procesar
+	 * @param <b>cargador<b> 
+	 * @return codigoError con el error que se ha producido
+	 * @throws exceptIdLlave 
+	 * @throws NumberFormatException 
+	 * @throws Exception. Puede lanzar una excepcion en la apertura del buffer de lectura
+	 * @complejidad <b>O(n)<b>
+	 * 
+	 */
+	public static void procesarFichero(String nombreFichero, Cargador cargador) throws  FileNotFoundException, IOException, NumberFormatException, exceptIdLlave {
+		String vCampos[]=new String[MAXCAMPOS];
+		String S=new String();
+		int numCampos=0;
+
+		System.out.println( "Procensando el fichero..." );
+		bufferIn = new BufferedReader(new FileReader(nombreFichero));//creacion del filtro asociado al flujo de datos
+
+		while((S=bufferIn.readLine())!= null) {
+			System.out.println( "S: "+S );
+			if (!S.startsWith("--"))  {
+				numCampos = trocearLinea(S,vCampos);
+				cargador.crear(vCampos[0],numCampos,vCampos);
+			}
+		}
+		bufferIn.close(); //cerramos el filtro
+	}
+
+
+	/**
+	 * @post Trocea cada linea y la separa por campos
+	 * @param <b>S<b> Cadena con la linea completa leida
+	 * @param <b>vCampos<b> Array de String que contiene en cada posicion un campo distinto
+	 * @return <b>numCampos<b> Numero campos encontrados
+	 * @complejidad <b>O(n)<b>
+	 */
+	private static int trocearLinea(String S,String[] vCampos) {
+		boolean eol = false;
+		int pos=0,posini=0, numCampos=0;
+
+		while (!eol)
+		{
+			pos = S.indexOf("#");
+			if(pos!=-1) {
+				vCampos[numCampos] = new String(S.substring(posini,pos));
+				S=S.substring(pos+1, S.length());
+				numCampos++;
+			}
+			else eol = true;
+		}
+		return numCampos;
+	}
+
+}

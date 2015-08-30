@@ -1,0 +1,46 @@
+10
+
+dir
+205
+https://subversion.assembla.com/svn/feli-carlos/trunk/proyecto/src
+https://subversion.assembla.com/svn/feli-carlos
+
+
+
+2013-06-05T21:19:41.403755Z
+205
+felisina
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+2e8396cc-7479-494d-a5bb-2ca34d3dc6dc
+
+cargador
+dir
+
+estructurasDeDatos
+dir
+
+personas
+dir
+
+registro
+dir
+
+station
+dir
+
+tests
+dir
+

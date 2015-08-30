@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Pokenot</string>
+    <string name="title_section1">Home</string>
+    <string name="title_section2">Cazados</string>
+    <string name="title_section3">Mostrar</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_example">About</string>
+    <string name="action_settings">Settings</string>
+    <string name="cazar">Cazar Pokenot</string>
+    <string name="formulario_alias">¿Qué alias le quieres dar a tu pokenot?</string>
+    <string name="boton_cancelar">Cancelar</string>
+    <string name="boton_guardar">Guardar</string>
+    <string name="aliaslabel">Alias:</string>
+    <string name="nombrelabel">Nombre:</string>
+    <string name="tipolabel">Tipo:</string>
+    <string name="pesolabel">Peso:</string>
+    <string name="alturalabel">Altura:</string>
+    <string name="sexolabel">Sexo:</string>
+    <string name="boton_modificar">Modificar</string>
+    <string name="boton_borrar">Borrar</string>
+    <string name="boton_foto">Hacer fotografia</string>
+
+</resources>

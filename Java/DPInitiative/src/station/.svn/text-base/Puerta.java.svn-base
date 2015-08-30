@@ -1,0 +1,321 @@
+/**
+ * Implementacion de los metodos de la clase Puerta
+ *
+ * @version 1.0
+ * @author
+ * Asignatura Desarrollo de Programas<br/>
+ * Grupo: Feli&Carlos <br/>
+ * Entrega EC1 <br/>
+ * <b> Felisa Maria Arroba Alonso </b><br>
+ * <b> Juan Carlos Bonilla Bermejo </b><br>
+ * Curso 12/13
+ */
+
+package station;
+import java.util.LinkedList;
+
+import estructurasDeDatos.Arbol;
+
+public class Puerta {
+
+	/** Boleano que nos dice si la puerta esta configurada o no*/
+	boolean configurada;
+	/** Boleano que nos dice si la puerta esta cerrada o no */
+	boolean cerrada;
+	/** Arbol de la memoria de llaves ya usadas en la cerradura de mi puerta */
+	Arbol <Llave> memoriaLlavesProbadas= new Arbol <Llave>();
+	/** Arbol de la combinacion de apertura de la cerradura de mi puerta */
+	Arbol <Llave> combinacionApertura = new Arbol <Llave>();
+
+	/** Lista de la combinacion de apertura de la cerradura de mi puerta */
+	LinkedList <Llave> combinacion;
+
+
+	public Puerta() {
+		this.configurada = false;
+		this.cerrada = false;
+		this.configurada = false;
+	}
+
+
+
+
+	/**
+	 * @pre Puerta creada correctamente
+	 * @post Comprueba si la puerta esta configurada
+	 * @return <b>True<b> si esta configurada
+	 *    	   <b>False<b> en caso contrario
+	 * @complejidad <b>O(1)<b> 
+	 */
+	public boolean isConfiguarada() {
+		return this.configurada;
+	}
+
+
+
+
+	/**
+	 * @pre Puerta creada correctamente
+	 * @post Comprueba si la puerta esta cerrada
+	 * @return <b>True<b> si esta cerrada
+	 *    	   <b>False<b> en caso contrario
+	 * @complejidad <b>O(1)<b> 
+	 */
+	public boolean isCerrada() {
+		return this.cerrada;
+	}
+
+
+
+
+	/**
+	 * @pre Puerta creada correctamente
+	 * @post Devuelve una cadena con el estado de la Puerta
+	 * @return <b>cerrada<b> si esta cerrada
+	 *    	   <b>abierta<b> en caso contrario
+	 * @complejidad <b>O(1)<b> 
+	 */
+	public String getEstado() {
+		if (cerrada)
+			return "cerrada";
+		return "abierta";
+	}
+
+
+
+
+	/**
+	 * @pre Puerta creada correctamente
+	 * @post Devuelve todas las Llaves probadas en la Puerta
+	 * @return <b>memoriaLlavesProbadas<b> memoria de Llaves probadas
+	 * @complejidad <b>O(1)<b> 
+	 */
+	public Arbol <Llave> getMemoriaLlavesProbadas(){
+		return this.memoriaLlavesProbadas;
+	}
+
+
+
+
+	/**
+	 * @pre Puerta creada correctamente
+	 * @post Devuelve la Combinacion de la Puerta
+	 * @return <b>combinacionApertura<b> Combinacion de llaves que abre la Puerta
+	 * @complejidad <b>O(1)<b> 
+	 */
+	public Arbol <Llave> getCombinacionApertura() {
+		return this.combinacionApertura;
+	}
+
+
+
+
+	/**
+	 * @pre Puerta creada correctamente
+	 * @post Devuelve la Combinacion de la Puerta
+	 * @return <b>combinacion<b> Combinacion de llaves que abre la Puerta
+	 * @complejidad <b>O(1)<b> 
+	 */
+	public LinkedList <Llave> getCombinacion(){
+		return this.combinacion;
+	}
+
+
+
+
+
+	/**
+	 * @pre Puerta creada correctamente
+	 * @post Configura la puerta 
+	 * @param <b>configurada<b> Estado que configura la Puerta
+	 * @complejidad <b>O(1)<b> 
+	 */
+	public void setConfiguarada(boolean configuarada) {
+		this.configurada = configuarada;
+	}
+
+
+
+
+	/**
+	 * @pre Puerta creada correctamente
+	 * @post Configura el estado de la Puerta  
+	 * @param <b>cerrada<b> Estado que configura la Puerta
+	 * @complejidad <b>O(1)<b> 
+	 */
+	public void setCerrada(boolean cerrada) {
+		this.cerrada = cerrada;
+	}
+
+
+
+
+
+	/**
+	 * @pre Puerta creada correctamente
+	 * @post Configura las llaves probadas en la Puerta  
+	 * @param <b>memoriaLlavesProbadas<b> Llaves probadas
+	 * @complejidad <b>O(1)<b> 
+	 */
+	public void setMemoriaLlavesProbadas(Arbol <Llave> memoriaLlavesProbadas) {
+		this.memoriaLlavesProbadas = memoriaLlavesProbadas;
+	} 
+
+
+
+
+
+	/**
+	 * @pre Puerta creada correctamente
+	 * @post Configura la combinacion de apertura de la Puerta  
+	 * @param <b>combinacionApertura<b> combinacion de apertura de la Puerta
+	 * @complejidad <b>O(1)<b> 
+	 */
+	public void setCombinacionApertura(Arbol <Llave> combinacionApertura) {
+		this.combinacionApertura = combinacionApertura;
+	}
+
+
+
+
+	/**
+	 * @pre Puerta creada correctamente
+	 * @post Configura la combinacion de apertura de la Puerta  
+	 * @param <b>combinacion<b> combinacion de apertura de la Puerta
+	 * @complejidad <b>O(1)<b> 
+	 */
+	public void setCombinacion (LinkedList <Llave> combinacion){
+		this.combinacion = combinacion;
+	}
+
+
+
+
+	/**
+	 * @pre Puerta creada correctamente
+	 * @post Comrueba si una llave esta en la memoria de llaves ya usadas
+	 * @param <b>llave<b> llave a comprobar si esta en la memoria
+	 * @return <b>True<b> si la llave ya esta en la memoria
+	 *         <b>False<b> en caso contrario
+	 * @complejidad <b>O(1)<b>
+	 */
+	public boolean estaProbada(Llave llave){
+		System.out.println("La llave a probar es: "+llave.getDato());
+		return memoriaLlavesProbadas.pertenece(llave);
+	}
+
+
+
+
+
+	/**
+	 * @pre Puerta creada correctamente
+	 * @post Comrueba si una llave forma parte de la Combinacion de la Puerta
+	 * @param <b>llave<b> llave a comprobar en la puerta
+	 * @return <b>True<b> si la llave forma parte de la  combinacion
+	 *         <b>False<b> en caso contrario
+	 * @complejidad <b>O(1)<b>
+	 */
+	public boolean formaParteCombinacion(Llave llave){
+		return combinacionApertura.pertenece(llave);
+	}
+
+
+
+
+
+	/**
+	 * @pre Puerta creada correctamente
+	 * @post Comprueba si se han cumplido las dos condiciones de apertura de la Puerta
+	 * @param <b>altura<b> Altura de control del ABB de la cerradura
+	 * @return <b>True<b> si se han cumplido las dos condiciones
+	 *         <b>False<b> en caso contrario
+	 * @complejidad <b>O(1)<b>
+	 */
+	public boolean comprobarCondicionApertura(int altura){
+		return (subCondicion1(altura) && subCondicion2());
+	}
+
+
+
+
+	/**
+	 * @pre Puerta creada correctamente
+	 * @post Comprueba que la profundidad del arbol es menor que el parametro de entrada
+	 * @param <b>altura<b> Altura de control del ABB de la cerradura
+	 * @return <b>True<b> si se cumple la condicion,
+	 *         <b>False<b> en caso contrario
+	 * @complejidad <b>O(1)<b>
+	 */
+	public boolean subCondicion1(int altura){
+		boolean enc = false;
+
+		if (combinacionApertura.profundidad() < altura){
+			enc = true;
+		}
+		return enc;
+	}
+
+
+
+
+	/**
+	 * @pre Puerta creada correctamente
+	 * @post Comprueba que el numero de nodos internos es mayor o igual que el numero de hojas
+	 * @return <b>True<b> si se cumple la condicion,
+	 *         <b>False<b> en caso contrario
+	 * @complejidad <b>O(1)<b>
+	 */
+	public boolean subCondicion2(){
+
+		boolean enc = false;	
+		int numHojas = combinacionApertura.numHojas();
+		int numInternas = (combinacionApertura.numNodos() - numHojas);
+
+		if (numInternas >= numHojas)
+			enc = true;
+
+		return enc;
+	}
+
+
+
+
+	/**
+	 * @pre Puerta creada correctamente
+	 * @post Abre la puerta
+	 * @complejidad <b>O(1)<b>
+	 */
+	public void abrirPuerta(){
+
+		setCerrada(false); // Abrimos la puerta
+		System.out.println("La puerta ha quedado en estado ABIERTA");
+		System.out.println("La altura para la condicion de apertura es: "+ combinacionApertura.profundidad());
+		System.out.print("Se han probado las siguientes LLAVES: ");
+		//Mostrado de la memoria de llaves probadas
+		memoriaLlavesProbadas.inOrden();
+		System.out.println();		
+	}
+
+
+
+
+	/**
+	 * @pre Puerta creada correctamente
+	 * @post Cierra la puerta. La memoria se limpia y se reestablece la combinacion
+	 * @complejidad <b>O(1)<b>
+	 * @throws exceptIdLlave 
+	 */
+	public void cerrarPuerta(Planta miPlanta) throws exceptIdLlave{
+
+		Llave dato = null;
+
+		//Borrado de la memoria de llaves probadas
+		while (!memoriaLlavesProbadas.vacio()){
+			dato =	memoriaLlavesProbadas.getRaiz();
+			memoriaLlavesProbadas.borrar(dato);
+		}
+		miPlanta.configurarCerradura(); //Se reestablece la combinacion
+		System.out.println("La puerta ha quedado en estado CERRADA");
+	}
+}

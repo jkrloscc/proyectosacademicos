@@ -1,0 +1,27 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/TextViewNombreApp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="5dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#003366" >
+    </TextView>
+
+    <TextView
+        android:id="@+id/TextViewBytesApp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/TextViewNombreApp"
+        android:textColor="#868686" >
+    </TextView>
+
+</RelativeLayout>

@@ -1,0 +1,755 @@
+* {
+	margin: 0% 0% 0% 0%;
+}
+
+header {
+	background-color: #256C95;
+	height: 45px;
+}
+
+nav {
+	float: left;
+	background-color: #256C95;
+	main width: 30%;
+	font-family: "facitweb", Helvetica sans-serif;
+	font-size: medium;
+	display: inline-block;
+	margin: 8px 0% -8px 5px;
+	padding: 0%;
+}
+
+nav a {
+	text-decoration: none;
+	color: #FFFFF8;
+	margin: 5px 5px 5px 5px;
+}
+
+nav a:visited {
+	text-decoration: none;
+	color: #FFFFF8;
+}
+
+nav a:hover {
+	border-radius: 5px;
+	border-color: #318fc5;
+	background-color: #318fc5;
+	text-decoration: none;
+	color: #FFFFF8;
+}
+
+nav a:active {
+	text-decoration: none;
+	color: #A2D6F4;
+}
+
+header a {
+	display: inline-block;
+	width: auto;
+	height: 25px;
+}
+
+#logo {
+	width: auto;
+	height: auto;
+}
+
+header img {
+	display: inline-block;
+	text-align: center;
+	margin-top: 5px;
+	margin-left: 250px;
+}
+
+#mas {
+	background-color: #6A99B4;
+	color: #FFFFFF;
+	border-radius: 3px;
+	border: solid #6A99B4;
+	display: inline-block;
+	text-decoration: none;
+	font-family: Helvetica, sans-serif;
+	width: 25px;
+	height: 25px;
+	margin: 5px 0% 0% 0%;
+	text-align: center;
+	float: right;
+}
+
+.newBoard {
+	background-color: #6A99B4;
+	color: #FFFFFF;
+	border-radius: 3px;
+	border: solid #6A99B4;
+	display: inline-block;
+	text-decoration: none;
+	font-family: Helvetica, sans-serif;
+	width: 25px;
+	height: 25px;
+	text-align: center;
+}
+
+#user {
+	background-color: #6A99B4;
+	color: #FFFFFF;
+	border-radius: 3px;
+	border: solid #6A99B4;
+	display: inline-block;
+	text-decoration: none;
+	font-family: Helvetica, sans-serif;
+	height: 25px;
+	float: right;
+	margin: 5px 10% 0% 1%;
+	text-align: center;
+}
+
+.user-boton {
+	background-color: #6A99B4;
+	color: #FFFFFF;
+	border-radius: 3px;
+	border: solid #6A99B4;
+	display: inline-block;
+	text-decoration: none;
+	font-family: Helvetica, sans-serif;
+	text-align: center;
+	float: right;
+}
+
+#user a {
+	background-color: #6A99B4;
+	display: inline-block;
+	text-decoration: none;
+	font-family: Helvetica, sans-serif;
+	height: 25px;
+	float: right;
+	margin: 5px 10% 0% 1%;
+	text-align: center;
+	color: #A9A9A9;
+}
+
+#botones {
+	float: right;
+	display: inline-block;
+	margin: 5px 10px 5px 5px;
+}
+
+#botones>p {
+	color: #B89E93;
+}
+
+.sing-up {
+	border-radius: 5px;
+	border: 3px solid #219B25;
+	display: inline-block;
+	background-color: #219B25;
+	text-decoration: none;
+	font-family: "facitweb", Helvetica sans-serif;
+	font-size: medium;
+	color: #FFFFF8;
+	padding: 2px;
+	width: auto;
+}
+
+#login {
+	border-radius: 5px;
+	border: 3px solid #5D91B0;
+	display: inline-block;
+	background-color: #5D91B0;
+	text-decoration: none;
+	font-family: "facitweb", Helvetica sans-serif;
+	font-size: medium;
+	color: #FFFFF8;
+	padding: 2px;
+}
+
+#main {
+	margin-top: 10%;
+	left: 40%;
+	height: auto;
+	min-height: 100%;
+}
+
+#main img {
+	display: block;
+	margin-left: 38%;
+	max-width: 350px;
+	max-height: 350px;
+	max-width: 350px;
+}
+
+#main h1 {
+	display: block;
+	padding-top: 15px;
+	color: #81919B;
+	font-family: "facitweb", Helvetica sans-serif;
+	font-size: extralarge;
+	text-align: center;
+}
+
+footer {
+	clear: both;
+	background-color: #F2F4F5;
+	height: 65px;
+	font-family: "facitweb", Helvetica sans-serif;
+	width: 100%;
+	margin-top: 2%;
+	bottom: 0;
+}
+
+.footer-index {
+	clear: both;
+	background-color: #F2F4F5;
+	height: 65px;
+	font-family: "facitweb", Helvetica sans-serif;
+	width: 100%;
+	margin-top: 2%;
+	bottom: 0;
+	position: fixed;
+}
+
+footer p {
+	padding-top: 2px;
+	margin-left: 125px;
+	color: #AE9D9B;
+}
+
+#body-login {
+	background-color: #E6E6E6;
+	font-family: "facitweb", Helvetica sans-serif;
+}
+
+#main-login {
+	border: 1px solid #BFBFBF;
+	border-radius: 2px;
+	height: auto;
+	background-color: #F0F0F0;
+	width: 25%;
+	margin-top: 10px;
+	margin-left: 40%;
+	padding: 10px;
+	color: #AA9393;
+}
+
+#main-login h1 {
+	color: black;
+	font-family: "facitweb", Helvetica sans-serif;
+	margin-bottom: 10px;
+}
+
+#main-login h2 {
+	font-family: "facitweb", Helvetica sans-serif;
+	color: black;
+}
+
+#main-login  input {
+	border-radius: 5px;
+	border: 1px solid #BFBFBF;
+	font-family: "facitweb", Helvetica sans-serif;
+	display: block;
+	width: 200px;
+	height: 30px;
+}
+
+#main-login  p {
+	display: inline-block;
+	margin-right: 20px;
+}
+
+#main-login>a {
+	display: inline-block;
+}
+
+#main-login a:visited {
+	text-decoration: none;
+	color: #AA9393;
+}
+
+#main-login a:hover {
+	text-decoration: none;
+	color: black;;
+}
+
+#main-login a:active {
+	text-decoration: none;
+	color: #AA9393;
+}
+
+#main-login button {
+	width: auto;
+	height: 40px;
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+
+#footer-login {
+	font-family: "facitweb", Helvetica sans-serif;
+	background-color: #E6E6E6;
+}
+
+.forgot-header {
+	background-color: #E6E6E6;
+	border: 1px dashed red;
+}
+
+#logo img {
+	max-width: 200px;
+	max-height: 200px;
+}
+
+.forgot form {
+	display: inline;
+	width: auto;
+}
+
+#forgot-pic {
+	width: 100px;
+	margin: 0px 45% 0px 45%;
+}
+
+#myBoards {
+	margin: 25px 0px 0px 25px;
+	width: auto;
+	font-family: "facitweb", Helvetica sans-serif;
+	display: inline;
+}
+
+#myBoards img {
+	margin: 6px 0px 0px 0px;
+	width: auto;
+	display: inline-block;
+}
+
+#myBoards>h1 {
+	display: inline-block;
+	margin-top: -5px;
+}
+
+.board {
+	width: auto;
+	display: inline-block;
+}
+
+.board a {
+	color: #F6F6F6;
+	text-decoration: none;
+	background-color: #23719F;
+	font-size: 20px;
+	display: inline-block;
+	border-radius: 5px;
+	height: 75px;
+	width: 225px;
+	margin: 20px;;
+	padding: 3%;
+}
+
+.board a:visited {
+	text-decoration: none;
+}
+
+.board a:hover {
+	text-decoration: none;
+}
+
+.board a:active {
+	text-decoration: none;
+}
+
+#body-list {
+	background-color: #23719F;
+	font-family: "facitweb", Helvetica sans-serif;
+}
+
+.myLists {
+	color: #F6F6F6;
+	margin: 25px 0px 0px 25px;
+	width: auto;
+	font-family: "facitweb", Helvetica sans-serif;
+	display: block;
+}
+
+.myLists h1 {
+	margin: 0px 10px 0px 0px;
+	display: inline-block;
+}
+
+.myLists a {
+	color: #F6F6F6;
+	display: inline-block;
+}
+
+#main-lists {
+	background-color: #23719F;
+}
+
+.list {
+	width: auto;
+	display: inline-block;
+	background-color: #DBDBDB;;
+	margin: 3%;
+	border-radius: 5px;
+}
+
+.list a {
+	background-color: #DBDBDB;
+	font-size: 20px;
+	display: inline-block;
+	border-radius: 5px;
+	width: auto;
+	margin-top: 2%;
+	padding: 3%;
+	color: #393939;
+	text-align: center;
+	text-decoration: none;
+}
+
+.list a:visited {
+	text-decoration: none;
+}
+
+.list a:hover {
+	text-decoration: none;
+}
+
+.list a:active {
+	text-decoration: none;
+}
+
+.card {
+	width: auto;
+	display: block;
+	margin: 0%;
+	padding: 0%;
+}
+
+.card a {
+	text-decoration: none;
+	color: #393939;
+	background-color: #FFFFFF;
+	font-size: 18px;
+	display: block;
+	border-radius: 5px;
+	height: 70px;
+	width: 210px;
+	margin: 20px;;
+	padding: 3%;
+}
+
+.card a:visited {
+	text-decoration: none;
+}
+
+.card a:hover {
+	text-decoration: none;
+}
+
+.card a:active {
+	text-decoration: none;
+}
+
+#addBoard {
+	display: inline;
+}
+
+#addBoard form {
+	margin: 5px 55px 0px 0px;
+	font-family: "facitweb", Helvetica sans-serif;
+	border: 2px solid #afabab;
+	padding: 2%;
+	width: 180px;
+	height: 125px;
+	float: right;
+	border-radius: 20px;
+	background-color: #f2f2f2;
+}
+
+#addBoard form h2 {
+	margin-bottom: 5px;
+}
+
+.create {
+	margin: 25px 5px 0px 5px;
+	border-radius: 5px;
+	border: 3px solid #219B25;
+	display: inline-block;
+	background-color: #219B25;
+	text-decoration: none;
+	font-family: "facitweb", Helvetica sans-serif;
+	font-size: large;
+	color: #FFFFF8;
+	padding: 5px;
+}
+
+#content {
+	clear: both;
+}
+
+.oculto {
+	visibility: hidden;
+}
+
+.mensaje {
+	text-align: center;
+	color: red;
+	border-radius: 3px solid red;
+	margin: 0px 5px 0px 5px;
+	border-radius: 5px;
+	display: block;
+	font-family: "facitweb", Helvetica sans-serif;
+	font-size: large;
+	padding: 5px;
+}
+
+.cerrar a {
+	float: right;
+	display: inline-block;
+	font-family: "facitweb", Helvetica sans-serif;
+	font-size: large;
+	color: #999999;
+	text-decoration: none;
+}
+
+.delete-boton a {
+	margin: 2% 0px 0px 2%;
+	border-radius: 5px;
+	display: block;
+	background-color: #eb711d;
+	text-decoration: none;
+	font-family: "facitweb", Helvetica sans-serif;
+	font-size: large;
+	color: #FFFFF8;
+	padding: 5px;
+	width: 50px;
+}
+
+#deleteBoard {
+	display: block;
+	text-align: center;
+	margin: 5% 45% 0% 45%;
+}
+
+#deleteBoard form {
+	font-family: "facitweb", Helvetica sans-serif;
+	border: 2px solid #afabab;
+	padding: 25%;
+	width: 250px;
+	height: auto;
+	border-radius: 20px;
+	background-color: #f2f2f2;
+}
+
+.boton-si {
+	margin: 20px 5px 0px 5px;
+	border-radius: 5px;
+	border: 3px solid #eb711d;
+	display: inline-block;
+	background-color: #eb711d;
+	text-decoration: none;
+	font-family: "facitweb", Helvetica sans-serif;
+	font-size: large;
+	color: #FFFFF8;
+	padding: 5px;
+}
+
+.boton-no {
+	margin: 20px 5px 0px 5px;
+	border-radius: 5px;
+	border: 3px solid #219B25;
+	display: inline-block;
+	background-color: #219B25;
+	text-decoration: none;
+	font-family: "facitweb", Helvetica sans-serif;
+	font-size: large;
+	color: #FFFFF8;
+	padding: 5px;
+}
+
+#setBoard {
+	display: inline-block;
+	margin: 5px 0px 0px 5px;
+	font-family: "facitweb", Helvetica sans-serif;
+	border: 2px solid #afabab;
+	padding: 2%;
+	width: 180px;
+	height: 100px;
+	border-radius: 20px;
+	background-color: #f2f2f2;
+}
+
+#setBoard form>input {
+	margin: 5px 0px 10px 5px;
+	font-family: "facitweb", Helvetica sans-serif;
+	padding: 2%;
+	border-radius: 5px;
+}
+
+.save {
+	margin: 25px 5px 0px 5px;
+	border-radius: 5px;
+	border: 3px solid #219B25;
+	display: inline-block;
+	background-color: #219B25;
+	text-decoration: none;
+	font-family: "facitweb", Helvetica sans-serif;
+	font-size: large;
+	color: #FFFFF8;
+	padding: 5px;
+}
+
+#cerrar2 {
+	font-family: "facitweb", Helvetica sans-serif;
+	text-decoration: none;
+	color: #767171;
+	display: inline-block;
+	margin-left: 5px;
+}
+
+#addlist form input {
+	float: right;
+	margin: 5px 10% 0px 0px;
+	background-color: #203864;
+	border: 1px solid #203864;
+	font-family: "facitweb", Helvetica sans-serif;
+	color: #FFFFF8;
+	font-size: x-large;
+}
+
+#addBoard {
+	display: inline;
+}
+
+#addList form {
+	margin: 5px 5px 10% 0px;
+	font-family: "facitweb", Helvetica sans-serif;
+	border: 2px solid #afabab;
+	padding: 2%;
+	width: 180px;
+	height: 125px;
+	float: right;
+	border-radius: 20px;
+	background-color: #f2f2f2;
+	text-align: center;
+}
+
+#addList form h2 {
+	margin-bottom: 5px;
+	color: #767171;
+}
+
+#content-list {
+	clear: both;
+}
+
+#newCard {
+	margin-left: 5px;
+	border-radius: 2px;
+}
+
+#setDescription {
+	display: inline;
+}
+
+#setDescription form {
+	margin: 3% 10% 10% 0px;
+	font-family: "facitweb", Helvetica sans-serif;
+	border: 2px solid #afabab;
+	padding: 2%;
+	width: 180px;
+	height: auto;
+	float: right;
+	border-radius: 20px;
+	background-color: #f2f2f2;
+	text-align: center;
+}
+
+#setDescription form h2 {
+	margin-bottom: 5px;
+	color: #767171;
+}
+
+.myCard {
+	color: #F6F6F6;
+	margin: 25px 0px 0px 25px;
+	width: auto;
+	font-family: "facitweb", Helvetica sans-serif;
+	display: inline-block;
+	text-decoration: none;
+}
+
+.myCard form {
+	display: inline-block;
+}
+
+.myCard form input {
+	margin: 5px 10% 0px 0px;
+	background-color: #203864;
+	border: 1px solid #203864;
+	font-family: "facitweb", Helvetica sans-serif;
+	color: #FFFFF8;
+	font-size: x-large;
+	display: inline-block;
+}
+
+#edit {
+	display: block;
+}
+
+.myCard h1 {
+	color: #F6F6F6;
+	margin: 25px 0px 0px 25px;
+	width: auto;
+	font-family: "facitweb", Helvetica sans-serif;
+	display: inline-block;
+	text-decoration: none;
+}
+
+.myCard h1  a {
+	display: inline-block;
+	text-decoration: none;
+	color: #F6F6F6;
+	font-family: "facitweb", Helvetica sans-serif;
+}
+
+.myCard h3 {
+	color: #F6F6F6;
+	margin: 25px 0px 0px 25px;
+	width: auto;
+	font-family: "facitweb", Helvetica sans-serif;
+	display: inline-block;
+	text-decoration: none;
+}
+
+.squareR {
+	border-radius: 5px;
+	width: auto;
+	margin: -2%;
+}
+
+#description {
+	margin: 3% 10% 10% 0px;
+	font-family: "facitweb", Helvetica sans-serif;
+	border: 2px solid #afabab;
+	padding: 2%;
+	width: 20%;
+	height: 5%;
+	float: right;
+	border-radius: 20px;
+	background-color: #f2f2f2;
+	text-align: center;
+}
+
+#addlist2 form input {
+	display: block;
+	margin: 3% 0px 10% 3%;
+	background-color: #203864;
+	border: 1px solid #203864;
+	font-family: "facitweb", Helvetica sans-serif;
+	color: #FFFFF8;
+	font-size: x-large;
+}
+
+#addlist2 p {
+	color: #F6F6F6;
+	margin: 25px 0px 0px 25px;
+	font-family: "facitweb", Helvetica sans-serif;
+	display: inline-block;
+	font-size: 24px;
+}

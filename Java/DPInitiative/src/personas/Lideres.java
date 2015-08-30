@@ -1,0 +1,89 @@
+/**
+ * Implementacion de los metodos de la clase Lideres.
+ *
+ * @version 1.0
+ * @author
+ * Asignatura Desarrollo de Programas<br/>
+ * Grupo: Feli&Carlos <br/>
+ * Entrega Junio <br/>
+ * <b> Felisa Maria Arroba Alonso </b><br>
+ * <b> Juan Carlos Bonilla Bermejo </b><br>
+ * Curso 12/13
+ */
+
+package personas;
+
+
+import java.util.Iterator;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
+import station.Planta;
+import estructurasDeDatos.Grafo;
+
+public class Lideres extends Personaje{
+
+
+	public Lideres() {
+		super();
+	}
+
+
+
+	/**
+	 * @post Constructor parametrizado de la clase Lideres
+	 * @param <b>marca<b> Cadena de caracteres con la marca del lider
+	 * @param <b>nombre<b> Cadena de caracteres con el nombre del lider
+	 * @param <b>turno<b> El turno del lider
+	 * @param <b>idSala<b> Identificador de la sala en la que se encuentra el lider
+	 * @complejidad <b>O(1)<b>
+	 */
+	public Lideres(String marca, String nombre, int turno,int idSala) {
+		super(marca,nombre,turno,idSala);
+	}
+
+
+
+
+	/**
+	 * @pre Grafo creado correctamente
+	 * @post Devolver por referencia un correcto caminoLider
+	 * @param <b>G<b> Grafo de nodos
+	 * @param <b>v<b> Sala en la que va ha empezar el lider
+	 * @param <b>visitados<b> Auxiliar que se usa en la llamada recursiva para saber los nodos visitados del grafo
+	 * @param <b>conjuntoCaminos<b> Conjunto de los caminos solucionados
+	 * @param <b>solucion<b> Auxiliar que usa la llamda recursiva para ir guardando las posibles soluciones
+	 * @return <b>False<b> Si puede continuar con la llamda recursiva
+               <b>True<b> En caso contrario
+	 * @complejidad <b>O(n)<b>
+	 */
+	public boolean caminoLider(Grafo G, Integer v, Integer ant, Set<Integer> visitados, List<Integer> solucion, List<Integer> caminoLider) {
+
+		LinkedHashSet<Integer> ady= new LinkedHashSet<Integer>();
+		Integer w= new Integer(0);
+		solucion.add(v);
+		boolean fin= false;
+		Planta miPlanta = Planta.obtenerInstancia(0);
+
+		if(v==miPlanta.getSalaSalida()){		
+
+			caminoLider.addAll(solucion);
+			return true;
+		}
+		visitados.add(v);
+
+		G.adyacentesNESO(v, ant, ady, miPlanta.getAncho()); 
+
+		Iterator<Integer> it= ady.iterator();
+		while( !fin && it.hasNext()){
+			w=(Integer)it.next();
+
+			if(!visitados.contains(w))
+				fin =caminoLider(G, w, v, visitados,solucion, caminoLider);	
+		}
+		solucion.remove(v);
+		return fin;
+	}	
+
+
+}

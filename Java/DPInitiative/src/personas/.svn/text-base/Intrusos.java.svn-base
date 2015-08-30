@@ -1,0 +1,280 @@
+/**
+ * Implementacion de los metodos de la clase Intrusos.
+ *
+ * @version 1.0
+ * @author
+ * Asignatura Desarrollo de Programas<br/>
+ * Grupo: Feli&Carlos <br/>
+ * Entrega EC1 <br/>
+ * <b> Felisa Maria Arroba Alonso </b><br>
+ * <b> Juan Carlos Bonilla Bermejo </b><br>
+ * Curso 12/13
+ */
+
+package personas;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
+
+import station.Dir;
+import station.Llave;
+import station.Planta;
+import station.Sala;
+import station.Puerta;
+import station.exceptIdLlave;
+import estructurasDeDatos.Grafo;
+
+public class Intrusos extends Personaje{
+
+	public Intrusos() {
+		super();
+	}
+
+
+
+	/**
+	 * @post Constructor parametrizado de la clase Intrusos
+	 * @param <b>marca<b> Cadena de caracteres con la marca del intruso
+	 * @param <b>nombre<b> Cadena de caracteres con el nombre del intruso
+	 * @param <b>turno<b> El turno del intruso
+	 * @param <b>idSala<b> Identificador de la sala en la que se encuentra el intruso
+	 * @throws exceptIdLlave 
+	 * @complejidad <b>O(n)<b>
+	 */
+	public Intrusos(String marca, String nombre, int turno, int idSala) throws exceptIdLlave {
+		super(marca,nombre,turno,idSala);
+		//Entrega al intruso una copia de las llaves impares
+		for(int i=0; i<=30; i++){
+			if(i%2 != 0){
+				Llave dato = new Llave(i);
+
+				pilaLlaves.insertarDato(dato);}
+		}
+
+	}
+
+
+
+	/**
+	 * @pre Intruso creado correctamente
+	 * @post Realiza una accion con la puerta. (La cierra)
+	 * @complejidad <b>O(1)<b>
+	 */
+	public boolean accionPuerta(){
+		boolean enc= false;
+		Planta miPlanta = Planta.obtenerInstancia(0);
+		if (idSala== miPlanta.getSalaSalida()){
+			Puerta P =  miPlanta.getPuerta();
+			if (!P.isCerrada()){
+				try {
+					P.cerrarPuerta(miPlanta);
+				} catch (exceptIdLlave e) {
+
+					e.printStackTrace();
+				}
+				enc = true;
+			}
+		}
+		return enc;
+	}
+
+
+
+	/**
+	 * @pre Intruso creado correctamente
+	 * @post Realiza una accion con la llave si la sala es par. (Suelta una llave si tiene alguna)
+	 * @complejidad <b>O(1)<b>
+	 */
+	public boolean accionLlaves( ){
+
+		boolean enc = false;
+		Planta miPlanta = Planta.obtenerInstancia(0);
+		Sala S = miPlanta.getSala(idSala);
+		int llave;
+
+		//Comprobamos que el id de la sala es un numero par
+		if ((S.getIdSala()%2 == 0)&& !pilaLlaves.estaVacia()){
+			llave = pilaLlaves.getDatoCima().getDato(); //Coje la cima del llavero del intruso
+			pilaLlaves.sacarDato(); //Borra la llave en el personaje
+			try {
+				S.introducirLlave(llave);
+			} catch (exceptIdLlave e) {
+
+				e.printStackTrace();
+			} //Dejamos la llave en la sala
+			enc = true;
+		}		
+		return enc;
+	}
+
+
+
+
+	/**
+	 * @pre Intruso creado correctamente
+	 * @post Rellena un vector con las vecinas adyacentes de una posicion determinada
+	 * @param <b>posActual<b> Posicion de la cual calcular sus vecinas
+	 * @param <b>vector<b> Array que guarda las vecinas en Orden  NOSE
+	 * @complejidad <b>O(1)<b>
+	 */
+	private  int  rellenarCoordenadas (int posActual, int vector[]){
+
+		// {NORTE, OESTE, SUR, ESTE};
+		Planta mip = Planta.obtenerInstancia(0);
+		Grafo G = mip.getLaberinto().getGrafo();
+		int ancho = mip.getAncho();
+		int alto = mip.getAlto();
+		int aux;
+		int numAdyacentes;
+		Set<Integer> ady = new TreeSet <Integer>(); // Almacena los adyacentes a un nodo
+
+		G.adyacentes(posActual, ady); // Calculamos los adyacentes
+		numAdyacentes = ady.size();
+
+		if (posActual - ancho > 0 ){ //NORTE
+
+			aux =posActual -ancho;
+			if 	(ady.contains(aux))
+				vector[0]= aux;
+			else vector[0]=posActual;
+		}	
+		else vector[0]=posActual;
+
+
+		if ((posActual % ancho) != 0 ){ //OESTE
+			aux= posActual -1;
+			if 	(ady.contains(aux))
+				vector[1]= aux;
+			else vector[1]=posActual;
+		}	
+		else vector[1]=posActual;
+
+
+		if ((posActual + ancho) <= (ancho * alto)){// SUR
+			aux = posActual + ancho;
+			if 	(ady.contains(aux))
+				vector[2]= aux;
+			else vector[2]=posActual;
+		}	
+		else vector[2]=posActual;
+
+
+		if ((posActual+1 % ancho) != 0){// ESTE
+			aux=posActual +1;
+			if 	(ady.contains(aux))
+				vector[3]= aux;
+			else vector[3]=posActual;
+		}	
+		else vector[3]=posActual;
+
+		return numAdyacentes;
+	}
+
+
+
+	/** 
+	 * @pre Intruso creado correctamente
+	 * @post Mueve al personaje por la planta siguiendo el "algoritmo de la mano derecha"
+	 * @param <b>G<b> Grafo de nodos
+	 * @param <b>conjuntoCaminosIntruso<b> Conjunto de los caminos solucionados
+	 * @throws IOException 
+	 * @complejidad <b>O(n)<b>
+	 **/
+	public void caminoCompletoIntruso(Grafo G, List<Integer> conjuntoCaminosIntruso, Set<Integer> visitados ) throws IOException{
+
+
+		Planta mip = Planta.obtenerInstancia(0);
+		int vector[] = new int[4]; // {NORTE, OESTE, SUR, ESTE};
+		int siguiente = 9999;// donde voy
+		int NE, NO, SO, SE;
+		int anterior, destino;
+		int posActual; // donde estoy
+		int cont=0;
+		int i=0;
+		int numAdyacentes=0;
+		boolean enc2 = false;
+		boolean ppo= true; // bandera para marcar el primer movimiento
+		Dir dirAnterior;  //Ultimo movimiento realizado
+
+		NE = mip.getAncho() - 1;  // Esquina NE
+		NO = mip.getSalaEntrada(); // Esquina NO
+		SO = mip.getAncho() * mip.getAlto() - mip.getAncho();   // Esquina SO
+		SE = (mip.getAncho() * mip.getAlto())-1 ;  // Esquina SE
+
+		posActual= NE; 
+		anterior=0;
+		destino= NO;  
+
+
+		conjuntoCaminosIntruso.add(posActual);
+		visitados.add(posActual);
+
+		while(cont<4){ 
+			while(posActual != destino){  // Calculamos un tramo de la Ruta
+				enc2 = false;
+
+				numAdyacentes= rellenarCoordenadas (posActual, vector);
+
+				if (ppo)  dirAnterior = Dir.N; //Al principio suponemos venir del Norte
+
+				else 	  dirAnterior= mip.calcularDireccion(anterior, posActual);
+
+				// {0->NORTE, 1->OESTE, 2->SUR, 3->ESTE};
+				if (dirAnterior == Dir.N) i = 3;
+				if (dirAnterior == Dir.O) i = 0;
+				if (dirAnterior == Dir.S) i = 1;
+				if (dirAnterior == Dir.E) i = 2;
+
+				ppo= false;
+
+				while (!enc2){
+
+					siguiente = vector[i];
+
+					if ( (siguiente != posActual) &&  ( (anterior!=siguiente  ) || (anterior==siguiente && numAdyacentes ==1  && visitados.contains(siguiente) ) ) ){
+
+						enc2=true;
+						conjuntoCaminosIntruso.add(siguiente);
+						visitados.add(siguiente);
+						anterior=posActual;
+						posActual=siguiente; // Actualizamos el nuevo Origen	
+
+					}
+					else{ // Cojo la siguiente direccion del vector
+
+						if (i>2) i=0;
+						else i++;	
+					}	
+
+				}//fin mientras !enc2
+
+			}// fin while interior
+			cont++;
+
+			//Actualizamos tramo a recorrer
+			if(destino == 0){ //Estamos en la esquina  NO
+				destino = SO;
+				//	cont++;
+			}//Actualizamos con la esquina Suroeste
+			else{
+				if(destino == SO){//Estamos en la esquina Suroeste
+					destino = SE;//Actualizamos con la esquina Sureste
+					//	cont++;
+				}
+				else{//Estamos en la esquina Sureste
+					destino = NE; //Actualizamos con la esquina Noreste
+					//	cont++;
+				}	//fin else
+			}//fin else   
+
+		}// fin while
+
+	}//fin modulo
+
+}//fin clase
+
+
+
+

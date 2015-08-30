@@ -1,0 +1,113 @@
+/**
+ * Implementacion de los metodos de la clase Sistema.
+ *
+ * @version 1.0
+ * @author
+ * Asignatura Desarrollo de Programas<br/>
+ * Grupo: Feli&Carlos <br/>
+ * Entrega Junio <br/>
+ * <b> Felisa Maria Arroba Alonso </b><br>
+ * <b> Juan Carlos Bonilla Bermejo </b><br>
+ * Curso 12/13
+ */
+
+package registro;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class Sistema {
+
+	/** Atributo de tipo File */
+	private static File F;
+
+	/** Flujo de escitura*/
+	private static FileWriter FW;
+	
+	
+	
+	public Sistema() {
+	}
+
+	
+			
+	/**
+	 * @pre 
+	 * @post Asocia el file a un flujo de escritura
+	 * @complejidad <b>O(1)<b>
+	 */
+	public static void aperturaSistema(){
+		try{
+			F= new File("./log.txt");
+		
+			FW= new FileWriter(F);
+		}catch(IOException e){
+			System.out.println("Ha ocurrido un error con la apertura del sistema"); 
+		}
+	}
+	
+	
+	
+	/**
+	 * @pre 
+	 * @post Permite la escritura
+	 * @param <b>s<b> Cadena a escribir
+	 * @complejidad <b>O(1)<b>
+	 */
+	public static void escribirSistema(String s){
+		try {
+			FW.write(s);
+		} catch (IOException e) {
+			System.out.println("Ha ocurrido un error a la hora de escribir en el sistema");
+		}
+	}
+	
+	
+	
+	
+	/**
+	 * @pre 
+	 * @post Permite la escritura
+	 * @param <b>s<b> Caracter a escribir
+	 * @complejidad <b>O(1)<b>
+	 */
+	public static void escribirSistema(char s){
+		try {
+			FW.write(s);
+		} catch (IOException e) {
+			System.out.println("Ha ocurrido un error a la hora de escribir en el sistema");
+		}
+	}
+	
+		
+	
+	/**
+	 * @pre 
+	 * @post Permite la escritura
+	 * @param <b>s<b> Entero a escribir
+	 * @complejidad <b>O(1)<b>
+	 */
+	public static void escribirSistema(int s){
+		try {
+			FW.write(s);
+		} catch (IOException e) {
+			System.out.println("Ha ocurrido un error a la hora de escribir en el sistema");
+		}
+	}
+	
+		
+	
+	/**
+	 * @pre 
+	 * @post Cierra el flujo de escritura
+	 * @complejidad <b>O(1)<b>
+	 */
+	public static void cierreSistema(){
+		try {
+			FW.close();
+		} catch (IOException e) {
+			System.out.println("Ha ocurrido un error a la hora de cerrar el sistema");
+		}
+	}
+}
